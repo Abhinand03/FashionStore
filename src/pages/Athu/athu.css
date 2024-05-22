@@ -1,0 +1,59 @@
+.sig{
+    width: 460px;
+    transition: 1s;
+    /* From https://css.glass */
+/* From https://css.glass */
+/* From https://css.glass */
+background: rgba(0, 0, 0, 0.36);
+border-radius: 16px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(8.5px);
+-webkit-backdrop-filter: blur(8.5px);
+border: 0px;
+}
+
+
+.log-h{
+    width: 225px;
+    padding: 14px 58px;
+    border-radius: 0px 0px 79px 0px;
+    position: relative;
+    bottom: 23px;
+    right: 24px;
+    transition: .5s;
+}
+*{
+    transition: .5s;
+}
+
+.log-h2{
+    width: 225px;
+
+    padding: 14px 58px;
+    border-radius: 0px 0px 0px 72px;
+    position: relative;
+    bottom: 24px;
+    left: 210px;
+    transition: .5s;
+
+}
+.inp-log{
+    border: solid 1px;
+    border-radius: 20px;
+
+}
+.new{
+    cursor: pointer;
+}
+ .not-p{
+    position: relative;
+    bottom: 87px;
+
+ }
+ .log-btn{
+    font-size: 27px;
+    font-weight: 700;
+ }
+ .main-body{
+    background: url("https://i.ibb.co/XF933zY/bck1.jpg");
+ }

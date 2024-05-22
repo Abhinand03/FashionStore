@@ -1,0 +1,112 @@
+.drop{
+    display: flex;
+    justify-content: end;
+    z-index: 2;
+    
+    
+}
+.d-ul{
+    list-style-type: none;
+    position: relative;
+
+    font-size: 12px;
+    right: 15px;
+    top: 9px;
+}
+.btn-log{
+    width: 120px;
+}
+.use{
+    font-size: 18px;
+    font-weight: 500;
+    margin-top: 20px;
+    margin-left: 10px;
+}
+.drop2{
+    border: solid 1.5px;
+    position: absolute;
+    top: 70px;
+    right: 45px;
+    background: white;
+    z-index: 2;
+}
+.intro1{
+    width: 100%;
+    padding-left: 10px;
+    padding-right: 10px;
+    height: 80px;
+    
+}
+.pr-cont{
+    font-size: 15px;
+    cursor: pointer;
+}
+.pr-cont:hover{
+    font-size: 16px;
+    font-weight: 600;
+}
+
+@media(max-width:990px){
+    .drop2{
+        border: solid 1.5px;
+        position: absolute;
+        top: 70px;
+        right: 210px;
+        background: white;
+    }
+
+}
+
+@media(max-width:899px){
+    .drop2{
+        border: solid 1.5px;
+        position: absolute;
+        top: 70px;
+        right: 175px;
+        background: white;
+    }
+
+}
+
+@media(max-width:820px){
+    .drop2{
+        border: solid 1.5px;
+        position: absolute;
+        top: 70px;
+        right: 130px;
+        background: white;
+    }
+
+}
+@media(max-width:708px){
+    .drop2{
+        border: solid 1.5px;
+        position: absolute;
+        top: 70px;
+        right: 287px;
+        background: white;
+    }
+
+}
+
+@media(max-width:600px){
+    .drop2{
+        border: solid 1.5px;
+        position: absolute;
+        top: 70px;
+        right: 240px;
+        background: white;
+    }
+
+}
+
+@media(max-width:460px){
+    .drop2{
+        border: solid 1.5px;
+        position: absolute;
+        top: 70px;
+        right: 126px;
+        background: white;
+    }
+
+}

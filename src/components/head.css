@@ -1,0 +1,168 @@
+.na-cont{
+    color:black;
+    font-size: 19px;
+    font-weight: 500;
+}
+.log{
+    display: none;
+}
+
+.inp{
+    width: 320px;
+    padding: 9px 17px;
+    border: solid 2px;
+    border-radius: 21px 0px 0px 21px;
+  
+}
+.li-inp{
+    /* position: relative;
+    left: 14rem; */
+}
+
+.inp-btn{
+    position: relative;
+    padding: 9px 10px 13.2px 18px;
+    right: 2px;
+    bottom: 2px;
+    color: white;
+    background: #c80b0b;
+    border: 0px;
+    border-radius: 0px 21px 021px 0px;
+
+}
+
+.icons{
+   color: black;
+}
+.ul1{
+    position: relative;
+    left: 50px;
+}
+.inp3{
+    display: none;
+}
+
+
+
+@media(max-width:1230px){
+    .na-cont{
+        color:black;
+        font-size: 19px;
+        font-weight: 500;
+    }
+    
+    .inp{
+        width: 280px;
+        padding: 9px 17px;
+        border: solid 2px;
+        border-radius: 21px 0px 0px 21px;
+      
+    }
+    .li-inp{
+        /* position: relative;
+        left: 14rem; */
+    }
+    
+    .inp-btn{
+        position: relative;
+        padding: 9px 6px 13.2px 6px;
+        right: 2px;
+        bottom: 2px;
+        color: white;
+        background: #c80b0b;
+        border: 0px;
+        border-radius: 0px 21px 021px 0px;
+    
+    }
+    .ul1{
+        position: relative;
+        left: 40px;
+    }
+    
+  
+}
+
+@media(max-width:1166px){
+    .ser{
+        display: none;
+    }
+    .inp{
+
+        width: 225px;
+        padding: 9px 10px;
+        border: solid 2px;
+        border-radius: 21px 0px 0px 21px;
+    }
+
+   
+}
+@media(max-width:990px){
+    .ul1{
+        position: relative;
+        left: 15px;
+    }
+    .side-inp{
+        display: none;
+    }
+    .log{
+        display: flex;
+
+    }
+    .icon2{
+        position: relative;
+    top: 10px;
+    left: 25px;
+    }
+    .icon3{
+        position: relative;
+        left: 35px;
+    }
+}
+
+@media(max-width:708px){
+.inp4{
+    display: none;
+}
+.inp3{
+    display: flex;
+    justify-content: center;
+}
+.inp6{
+    width: 270px;
+
+}
+.inp-btn{
+    position: relative;
+    padding: 9px 6px 13.2px 6px;
+    right: 2px;
+    bottom: 0px;
+    color: white;
+    background: #c80b0b;
+    border: 0px;
+    border-radius: 0px 21px 021px 0px;
+
+}
+.icon2{
+    position: relative;
+top: 0px;
+left: -45px;
+}
+.icon3{
+    position: relative;
+    left: 45px;
+}
+}
+
+@media(max-width:460px){
+    .icon2{
+        position: relative;
+    top: 0px;
+    left: 0px;
+    }
+    .icon3{
+        position: relative;
+        left: 10px;
+    }
+
+}
+
