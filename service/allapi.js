@@ -40,3 +40,18 @@ export const removeitem=async(id)=>{
     return await CommanAPI("DELETE",`${base_url}/deletecart/${id}`,{},"")
 
 }
+
+//orders
+
+export const orderup=async(data)=>{
+    return await CommanAPI("POST",`${base_url}/order`,data,"")
+}
+
+export const alldeltcart=async(id)=>{
+    return await CommanAPI("DELETE",`${base_url}/alldelt/${id}`,{},"")
+}
+
+//razorpay
+export const razorpay=async(data)=>{
+    return await CommanAPI("POST",`${base_url}/razorpay`,data,"")
+}
