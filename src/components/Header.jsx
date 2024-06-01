@@ -1,11 +1,15 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 // import img from '../image/logo1.png'
 import './head.css'
 import DropD from './Dropdown/DropD'
 import { useNavigate } from 'react-router-dom'
+import { adtocart, cartcount } from '../../service/allapi'
 
 
 function Header() {
+  const [count,setcount]=useState(0)
+  const [status,setstatus]=useState(false)
+
   const [user ,setuser]=useState(false)
   const handlechnage=()=>{
     setuser(true)
@@ -15,12 +19,40 @@ function Header() {
 
   }
   const navigate=useNavigate()
+  const cart=()=>{
+ 
+   const  exituser=sessionStorage.getItem('token')
+
+   if(exituser){
+    navigate('cart')
+
+   }
+   else{
+    navigate('log')
+   }
+
+  }
+  useEffect(()=>{
+    handlecartcount()
+  },[])
+
+  const handlecartcount=async()=>{
+    const header = { "Authorization": `Bearer ${sessionStorage.getItem('token')}` }
+     const count= await cartcount(header)
+     setcount(count.data)
+    
+
+    
+
+
+  
+  }
   return (
     <>
 
 
 
-      <nav className="navbar bg-light shadow navbar-expand-lg p-3 ">
+<nav className="navbar bg-light shadow navbar-expand-lg p-3 ">
         <div className="container-fluid">
           <a className="navbar-brand " href="#">Fashion<span className='bg-warning badge text-dark'>Sotre</span></a>
           <div className='log'>
@@ -29,10 +61,10 @@ function Header() {
                       <input type="text" name="" id="" className='inp' placeholder='Search For Poducts,Brand and more' /><button className='inp-btn'><span className='ser'>Search</span><i className="fa-solid fa-magnifying-glass mx-2"></i></button>
                     </div>
                     <div className="nav-item me-2 icon2  ">
-                      <a className="nav-link icons" onMouseEnter={handlechnage} aria-current="page" href="#"><i className="fa-solid fa-user-tie fa-xl"></i></a>
+                      <a className="nav-link icons" onMouseEnter={handlechnage} aria-current="page" ><i className="fa-solid fa-user-tie fa-xl"></i></a>
                     </div>
-                    <di className="nav-item me-2 icon2 icon3">
-                    <a className="nav-link icons"  aria-current="page" href="#"><i class="fa-solid fa-cart-shopping fa-xl"> </i><sup><span className='badge bg-danger'>0</span></sup></a>
+                    <di className="nav-item me-2 icon2 icon3" >
+                    <a className="nav-link icons" onClick={cart}  aria-current="page" ><i class="fa-solid fa-cart-shopping fa-xl"> </i><sup><span className='badge bg-danger'>{count}</span></sup></a>
 
                     </di>
                   
@@ -75,8 +107,9 @@ function Header() {
                       
                     
                     </li>
-                    <li className="nav-item me-2 ">
-                    <a className="nav-link icons" aria-current="page" href="#"><i class="fa-solid fa-cart-shopping fa-xl"> </i><sup><span className='badge bg-danger'>0</span></sup></a>
+                    
+                    <li className="nav-item me-2 " style={{cursor:"pointer"}}>
+                    <a className="nav-link icons"  onClick={cart} aria-current="page"><i class="fa-solid fa-cart-shopping fa-xl"> </i><sup><span className='badge bg-danger'>{count}</span></sup></a>
 
                     </li>
                   </ul>
@@ -110,6 +143,7 @@ function Header() {
 
                 
                 </div> 
+                   
                    
 
     </>

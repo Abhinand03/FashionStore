@@ -57,6 +57,7 @@ function Athu() {
                 if(result.status==200){
                     sessionStorage.setItem("user",result.data.user)
                     sessionStorage.setItem("token",result.data.token)
+                    sessionStorage.setItem('userDetails',JSON.stringify(result.data.userDetails))
                     navigate("/")
                     toast.success("Login successfully")
                     

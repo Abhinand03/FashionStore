@@ -1,29 +1,58 @@
 import React from 'react'
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './card.css'
-function ProCard() {
-  const naviagte = useNavigate()
+import base_url from '../../../service/base_url'
+import { adtocart } from '../../../service/allapi';
+import { toast } from 'react-toastify';
 
-  const handleproduct=()=>{
-    naviagte('/details')
+function ProCard({product}) {
+  
+  const navigate=useNavigate()
+  
+
+  const getdata = async () => {
+    const header = { "Authorization": `Bearer ${sessionStorage.getItem('token')}` }
+
+    const result = await adtocart(product,header)
+    console.log(result);
+    if (result.status == 200) {
+      toast.success(result.data.message)
+    }
+    else {
+    //   console.log(result);
+    navigate('/log')
+
+      alert(result.response.data)
+    }
+
+
   }
+  
+
+
+  
 
   return (
     <>
 
      <Card style={{ width: '18rem' }} className='mt-5 mx-2 m-card' >
-      <Card.Img variant="top" className='car-img' onClick={handleproduct} src="https://assets.ajio.com/medias/sys_master/root/20230621/EPeU/64924a66d55b7d0c63889027/-473Wx593H-463775643-blue-MODEL.jpg" />
+      <Link  to={'/details'} state={{product}}>
+
+        <Card.Img variant="top" className='car-img'   src={`${base_url}/uploads/${product.image}`} />
+      </Link>
+
       <Card.Body>
-        <Card.Title>Shirts</Card.Title>
+        <Card.Title><p className='text-secondary'>{product.brand}</p></Card.Title>
+        <Card.Title>{product.title}</Card.Title>
         <Card.Text>
-        Men Printed Slim Fit Shirt with Full Sleeves
+        {product.description}
         </Card.Text>
-        <Card.Text>
-        ₹999
+        <Card.Text>₹
+        {product.price}
         </Card.Text>
-        <Button variant="warning">Add To cart</Button>
+        <Button variant="warning" onClick={()=>getdata(product)} >Add To cart</Button>
       </Card.Body>
     </Card>
     
