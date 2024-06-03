@@ -67,14 +67,14 @@ function Ordercconfirm() {
                                             <Form.Control value={data.username} type="text" onChange={(e) => setdata({ ...data, username: e.target.value })} placeholder="name" />
                                         </FloatingLabel>
                                         <FloatingLabel className=" ms-2 mb-3 w-50" controlId="floatingmob" label="Mobile NO">
-                                            <Form.Control value={data.phone} type="Number" onChange={(e) => setdata({ ...data, phone: e.target.value })} placeholder="Mobile NO" />
+                                            <Form.Control value={data.phone} maxLength={10} type="Number" onChange={(e) => setdata({ ...data, phone: e.target.value })} placeholder="Mobile NO" />
                                         </FloatingLabel>
 
                                     </div>
                                     <div className='d-flex '>
 
                                         <FloatingLabel className="mb-3 w-50" controlId="floatingname" label="Pincode">
-                                            <Form.Control type="Number" value={data.pincode} onChange={(e) => setdata({ ...data, pincode: e.target.value })} placeholder="pincode" />
+                                            <Form.Control  type="Number" value={data.pincode} onChange={(e) => setdata({ ...data, pincode: e.target.value })} placeholder="pincode" />
                                         </FloatingLabel>
                                         <FloatingLabel className=" ms-2 mb-3 w-50" controlId="floatingPassword" label="Locality">
                                             <Form.Control type="text" value={data.locality} onChange={(e) => setdata({ ...data, locality: e.target.value })} placeholder="locality" />

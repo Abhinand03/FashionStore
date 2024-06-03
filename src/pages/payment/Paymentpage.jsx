@@ -41,7 +41,7 @@ function Paymentpage() {
             console.log(userDetails);
             setuserdata(userDetails)
             const total = sessionStorage.getItem('total')
-            const razorpaytotal = total
+            const razorpaytotal = total*100
             setrazorpaydetail({ ...razorpaydetail, amount: razorpaytotal })
 
 
@@ -70,7 +70,7 @@ function Paymentpage() {
                 const newOrder = {
                     ...order,
                     username: userdata.username,
-                    address: userdata.address, // Ensure correct key name here if it's "address" not "adress"
+                    adress: userdata.adress, 
                     dist: userdata.dist,
                     email: userdata.email,
                     locality: userdata.locality,
@@ -117,7 +117,7 @@ function Paymentpage() {
                         const newOrder = {
                             ...order,
                             username: userdata.username,
-                            adress: userdata.adress, // Ensure correct key name here if it's "address" not "adress"
+                            adress: userdata.adress, 
                             dist: userdata.dist,
                             email: userdata.email,
                             locality: userdata.locality,

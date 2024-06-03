@@ -14,8 +14,8 @@ export const userupdate=async(data,header)=>
     return await CommanAPI("PUT", `${base_url}/user-update`,data,header)
 }
 
-export const allproduct=async()=>{
-    return await CommanAPI("GET",`${base_url}/all-product`,"","")
+export const allproduct=async(search)=>{
+    return await CommanAPI("GET",`${base_url}/all-product?search=${search}`,"","")
 
 }
 //cart section
@@ -54,4 +54,17 @@ export const alldeltcart=async(id)=>{
 //razorpay
 export const razorpay=async(data)=>{
     return await CommanAPI("POST",`${base_url}/razorpay`,data,"")
+}
+
+//user orders
+export const userorder=async(header)=>{
+    return await CommanAPI("GET",`${base_url}/user-order`,"",header)
+}
+
+
+//category view
+export const catView=async(id)=>
+{
+    return await CommanAPI("GET",`${base_url}/cat-view/${id}`,"","")
+
 }

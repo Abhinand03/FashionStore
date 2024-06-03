@@ -7,7 +7,7 @@ import base_url from '../../../service/base_url'
 import { adtocart } from '../../../service/allapi';
 import { toast } from 'react-toastify';
 
-function ProCard({product}) {
+function ProCard({product,cat}) {
   
   const navigate=useNavigate()
   
@@ -40,11 +40,11 @@ function ProCard({product}) {
      <Card style={{ width: '18rem' }} className='mt-5 mx-2 m-card' >
       <Link  to={'/details'} state={{product}}>
 
-        <Card.Img variant="top" className='car-img'   src={`${base_url}/uploads/${product.image}`} />
+        <Card.Img variant="top" className='car-img'   src={`${base_url}/uploads/${product?.image}`} />
       </Link>
 
       <Card.Body>
-        <Card.Title><p className='text-secondary'>{product.brand}</p></Card.Title>
+        <Card.Title><p className='text-secondary'>{product?.brand}</p></Card.Title>
         <Card.Title>{product.title}</Card.Title>
         <Card.Text>
         {product.description}

@@ -11,6 +11,8 @@ import Header from './components/Header'
 import Cart from './components/cart/Cart'
 import Ordercconfirm from './pages/Confirm/Ordercconfirm'
 import Paymentpage from './pages/payment/Paymentpage'
+import Orderlist from './pages/orderlist/Orderlist'
+import Category from './pages/category/Category'
 function App() {
 
   return (
@@ -25,6 +27,8 @@ function App() {
       <Route path='/cart' element={<Cart/>}/>
       <Route path='/confirm' element={<Ordercconfirm/>}/>
       <Route path='/pay' element={<Paymentpage/>}/>
+      <Route path='/orderlist' element={<Orderlist/>}/>
+      <Route path='/cat' element={<Category/>}/>
     </Routes>
     <ToastContainer/>
     

@@ -1,0 +1,32 @@
+.content{
+    display: flex;
+    justify-content: space-evenly;
+
+}
+.m-cont{
+    position: relative;
+    width: 90%;
+    background: #ebdede;
+    left: 66px
+}
+.or-p1{
+    position: relative;
+    bottom: 17px;
+    font-size: 14px;
+}
+.or-p2{
+    font-size: 17px;
+}
+.m-cont:hover{
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+.or-h1{
+    position: relative;
+    top: 2rem;
+    margin-left: 99px;
+    color: white;
+    background: green;
+    width: 12%;
+    padding: 11px;
+    border-radius: 12px;
+}

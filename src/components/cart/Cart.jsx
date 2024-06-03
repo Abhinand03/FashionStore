@@ -3,7 +3,7 @@ import { cartview, removeitem, upcart } from '../../../service/allapi'
 import Header from '../Header'
 import { Row, Col } from 'react-bootstrap'
 import base_url from '../../../service/base_url'
-import { Link } from 'react-router-dom'
+import { Link, json } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import Payhead1 from '../Payhead1'
 
@@ -38,10 +38,13 @@ function Cart() {
   let total = 0
 
   data.map(item => (
-    total = (item.productId?item.productId.price:1 * item.quantity) + total
+    total = (item.productId?item.productId.price*item.quantity:1 * item.quantity) + total
   )) 
 
   sessionStorage.setItem('total',total)
+
+  sessionStorage.setItem('qty',JSON.stringify(data))
+  
 
 
   console.log(total);

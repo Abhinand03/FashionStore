@@ -36,7 +36,7 @@ function DropD() {
                             <li className='mt-3 pr-cont'><Link to={'/profile'}  className='text-decoration-none '>profile</Link></li>
                             {/* <li className='mt-3 pr-cont'>Edit Profile</li> */}
                             <li className='mt-3 pr-cont'> <Link className='text-decoration-none '>Cart</Link></li>
-                            <li className='mt-3 pr-cont'><Link className='text-decoration-none '>Orders</Link></li>
+                            <li className='mt-3 pr-cont'><Link className='text-decoration-none ' to={'/orderlist'}>Orders</Link></li>
                          
 
                         </ul>
