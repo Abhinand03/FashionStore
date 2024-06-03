@@ -41,9 +41,9 @@ function Athu() {
         }
         
     }
-    const handleGoogle=()=>{
-        window.open("http://localhost:4000/auth/google/callback","_self")
-    }
+    // const handleGoogle=()=>{
+    //     window.open("http://localhost:4000/auth/google/callback","_self")
+    // }
 
     const handelelogin=async()=>{
         const {email,password}=data
@@ -127,7 +127,7 @@ function Athu() {
                                       
                                         
                                         <div className='mt-5 d-flex justify-content-center'>
-                                        <GoogleButton onClick={handleGoogle}/>
+                                        {/* <GoogleButton onClick={handleGoogle}/> */}
 
                                         </div>
                                         
@@ -138,7 +138,7 @@ function Athu() {
                                         
 
                                         :
-                                        <div className='d-grid'>
+                                        <div className='d-grid '>
                                             <button className='btn btn-success me-3 btn-block log-btn' onClick={handleregister} type='submit' >
                                             <span>Register</span>
                                         </button>
@@ -150,7 +150,7 @@ function Athu() {
                                 <p className='new' onClick={chnageStatus}>
                                     {
                                         status ?
-                                            <p className='text-primary text-center not-p'><span className='text-secondary'>Not Registerd ?</span>Create An Account</p> :
+                                            <p className='text-primary text-center not-p mt-5 mb-5'><span className='text-secondary'>Not Registerd ?</span>Create An Account</p> :
                                             <p className='text-center text-primary mt-3'>Already a User</p>
                                     }
                                 </p>

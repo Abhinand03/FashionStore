@@ -6,8 +6,12 @@ import './card.css'
 import base_url from '../../../service/base_url'
 import { adtocart } from '../../../service/allapi';
 import { toast } from 'react-toastify';
+import { useContext } from 'react';
+import { headstatus } from '../../context/Context';
 
-function ProCard({product,cat}) {
+function ProCard({product}) {
+  const {headSt, setheadSt}=useContext(headstatus)
+
   
   const navigate=useNavigate()
   
@@ -16,6 +20,7 @@ function ProCard({product,cat}) {
     const header = { "Authorization": `Bearer ${sessionStorage.getItem('token')}` }
 
     const result = await adtocart(product,header)
+    setheadSt(!headSt)
     console.log(result);
     if (result.status == 200) {
       toast.success(result.data.message)

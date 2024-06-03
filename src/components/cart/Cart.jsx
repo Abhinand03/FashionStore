@@ -6,9 +6,13 @@ import base_url from '../../../service/base_url'
 import { Link, json } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import Payhead1 from '../Payhead1'
+import { headstatus } from '../../context/Context'
+import { useContext } from 'react'
 
 
 function Cart() {
+  // const {headSt, setheadSt}=useContext(headstatus)
+
   const [qty, setqty] = useState(1)
   const [status,setstatus]=useState(false)
   
@@ -43,7 +47,7 @@ function Cart() {
 
   sessionStorage.setItem('total',total)
 
-  sessionStorage.setItem('qty',JSON.stringify(data))
+
   
 
 
@@ -106,7 +110,7 @@ function Cart() {
    
 
   }
-
+  
 
 
   return (
@@ -199,8 +203,8 @@ function Cart() {
                   <hr />
                   <h5>Total <span>{total}</span></h5>
                 </div>
-                <div className='d-grid'>
-                  <Link className='d-grid text-decoration-none'  state={data} to={'/confirm'}>
+                <div className='d-grid' >
+                  <Link className='d-grid text-decoration-none'   state={data} to={'/confirm'}>
                      <button className='btn btn-warning grid-block p-2' >Place Order</button>
 
                   

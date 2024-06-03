@@ -5,11 +5,14 @@ import DropD from './Dropdown/DropD'
 import { Link, useNavigate } from 'react-router-dom'
 import { adtocart, cartcount } from '../../service/allapi'
 import { serchcontext } from '../context/Context'
+import { headstatus } from '../context/Context'
 
 
 
 function Header() {
   const {search,setsearch}=useContext(serchcontext)
+  const {headSt, setheadSt}=useContext(headstatus)
+
   const [count, setcount] = useState(0)
   const [status, setstatus] = useState(false)
 
@@ -37,7 +40,7 @@ function Header() {
   }
   useEffect(() => {
     handlecartcount()
-  }, [])
+  }, [headSt])
 
   const handlecartcount = async () => {
     const header = { "Authorization": `Bearer ${sessionStorage.getItem('token')}` }

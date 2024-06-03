@@ -4,6 +4,7 @@ import Banner from '../../components/banner/Banner'
 import ProCard from '../../components/Productcard/ProCard'
 import { allproduct } from '../../../service/allapi'
 import { serchcontext } from '../../context/Context'
+import { headstatus } from '../../context/Context'
 
 function Landing() {
   const {search,setsearch}= useContext(serchcontext)

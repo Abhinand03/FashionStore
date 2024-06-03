@@ -7,9 +7,13 @@ import { toast } from 'react-toastify'
 import { alldeltcart } from '../../../service/allapi'
 import './pay.css'
 import { razorpay } from '../../../service/allapi'
+import { useContext } from 'react'
+import { headstatus } from '../../context/Context'
 
 
 function Paymentpage() {
+  const {headSt, setheadSt}=useContext(headstatus)
+
     const [userdata, setuserdata] = useState({})
     const [radio, setradio] = useState({ paymentmode: "" })
     const [order, setorder] = useState({
@@ -25,7 +29,7 @@ function Paymentpage() {
     const location = useLocation()
     const product = location.state
     console.log(location.state);
-    console.log(product[0]);
+    console.log(product[0].quantity);
 
 
     const navigate = useNavigate()
@@ -40,6 +44,7 @@ function Paymentpage() {
             const userDetails = JSON.parse(sessionStorage.getItem('userDetails'))
             console.log(userDetails);
             setuserdata(userDetails)
+          
             const total = sessionStorage.getItem('total')
             const razorpaytotal = total*100
             setrazorpaydetail({ ...razorpaydetail, amount: razorpaytotal })
@@ -55,7 +60,7 @@ function Paymentpage() {
             alert("please login")
         }
 
-    }, [])
+    }, [headSt])
 
 
 
@@ -165,7 +170,7 @@ function Paymentpage() {
                     "address": "Razorpay Corporate Office"
                 },
                 "theme": {
-                    "color": "#3399cc"
+                    "color": "#ad0b09"
                 }
             };
 

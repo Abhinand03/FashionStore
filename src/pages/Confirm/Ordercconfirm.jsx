@@ -10,11 +10,15 @@ import { userupdate } from '../../../service/allapi';
 import { useLocation } from 'react-router-dom';
 import Payhead1 from '../../components/Payhead1';
 import { Link } from 'react-router-dom';
+import { useContext } from 'react';
+import { headstatus } from '../../context/Context';
 
 
 
 function Ordercconfirm() {
     // const [productdata,setproductdata]=useState([])
+  const {headSt, setheadSt}=useContext(headstatus)
+
 
     const location = useLocation()
     const product = location.state
@@ -44,11 +48,14 @@ function Ordercconfirm() {
         sessionStorage.setItem("userDetails", JSON.stringify(result.data))
 
         console.log(result);
+        setheadSt(!headSt)
+
 
 
 
     }
     const total = sessionStorage.getItem('total')
+    
 
     return (
         <>
