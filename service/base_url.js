@@ -1,2 +1,2 @@
- const base_url="https://fashion-server-9qfy.onrender.com"
+ const base_url="http://localhost:4000"
   export default base_url

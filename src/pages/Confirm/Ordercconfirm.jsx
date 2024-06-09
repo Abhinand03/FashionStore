@@ -18,6 +18,9 @@ import { headstatus } from '../../context/Context';
 function Ordercconfirm() {
     // const [productdata,setproductdata]=useState([])
   const {headSt, setheadSt}=useContext(headstatus)
+  var tomorrow = new Date();
+  tomorrow.setDate(tomorrow.getDate() + 4);
+  const deldate = tomorrow.toDateString()
 
 
     const location = useLocation()
@@ -37,6 +40,7 @@ function Ordercconfirm() {
         else{
             alert("please login")
         }
+       
 
 
     }, [])
@@ -127,7 +131,7 @@ function Ordercconfirm() {
                                             product.map(item => (
                                                 <div className='d-flex mt-4'>
                                                     <img className='me-5' width={'75rem'} src={`${base_url}/uploads/${item.productId?.image}`} alt="" />
-                                                    <p className='ms-5'>Delivery in 3 Days</p>
+                                                    <p className='ms-5'>Delivered in {deldate}</p>
                                                 </div>
 
                                             ))

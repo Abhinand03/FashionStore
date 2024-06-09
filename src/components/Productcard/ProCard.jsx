@@ -8,7 +8,7 @@ import { adtocart } from '../../../service/allapi';
 import { toast } from 'react-toastify';
 import { useContext } from 'react';
 import { headstatus } from '../../context/Context';
-
+import Swal from 'sweetalert2';
 function ProCard({product}) {
   const {headSt, setheadSt}=useContext(headstatus)
 
@@ -25,11 +25,15 @@ function ProCard({product}) {
     if (result.status == 200) {
       toast.success(result.data.message)
     }
+    
     else {
     //   console.log(result);
+    
+    Swal.fire("please Login First");
     navigate('/log')
 
-      alert(result.response.data)
+
+      // alert(result.respnse.data)
     }
 
 
@@ -42,22 +46,25 @@ function ProCard({product}) {
   return (
     <>
 
-     <Card style={{ width: '18rem' }} className='mt-5 mx-2 m-card' >
+     <Card  className='mt-5 mx-2 m-card' >
       <Link  to={'/details'} state={{product}}>
 
         <Card.Img variant="top" className='car-img'   src={`${base_url}/uploads/${product?.image}`} />
       </Link>
 
       <Card.Body>
-        <Card.Title><p className='text-secondary'>{product?.brand}</p></Card.Title>
-        <Card.Title>{product.title}</Card.Title>
+        <Card.Title><p >{product?.brand}</p></Card.Title>
+        <Card.Title className='text-secondary'>{product.title}</Card.Title>
+       
         <Card.Text>
-        {product.description}
+          <div className='d-flex'>
+            <p className='font-weight-bold'>₹{product.price}</p>
+            <p className='ms-4'>MRP : ₹<del>1999</del> </p>
+
+            </div>
+
         </Card.Text>
-        <Card.Text>₹
-        {product.price}
-        </Card.Text>
-        <Button variant="warning" onClick={()=>getdata(product)} >Add To cart</Button>
+        <Button variant="danger" className='car-btn' onClick={()=>getdata(product)} >Add To cart</Button>
       </Card.Body>
     </Card>
     

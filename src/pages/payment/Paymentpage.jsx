@@ -9,15 +9,16 @@ import './pay.css'
 import { razorpay } from '../../../service/allapi'
 import { useContext } from 'react'
 import { headstatus } from '../../context/Context'
+import Swal from 'sweetalert2'
 
 
 function Paymentpage() {
-  const {headSt, setheadSt}=useContext(headstatus)
+    const { headSt, setheadSt } = useContext(headstatus)
 
     const [userdata, setuserdata] = useState({})
     const [radio, setradio] = useState({ paymentmode: "" })
     const [order, setorder] = useState({
-        adress: "", dist: "", email: "", locality: "", phone: 0, pincode: 0, state: "", username: "", quantity: 0, userId: "", brand: "", category: "", description: "", image: "", price: 0, title: "", paymentmode: "", razorpay_payment_id: "", razorpay_order_id: ""
+        adress: "", dist: "", email: "", locality: "", phone: 0, pincode: 0, state: "", username: "", quantity: 0, userId: "", brand: "", category: "", description: "", image: "", price: 0, title: "", paymentmode: "", razorpay_payment_id: "", razorpay_order_id: "", dstatus: "Undelivered", deliverydate: ""
     })
     const [razorpaydetail, setrazorpaydetail] = useState({
         amount: 0,
@@ -44,9 +45,9 @@ function Paymentpage() {
             const userDetails = JSON.parse(sessionStorage.getItem('userDetails'))
             console.log(userDetails);
             setuserdata(userDetails)
-          
+
             const total = sessionStorage.getItem('total')
-            const razorpaytotal = total*100
+            const razorpaytotal = total * 100
             setrazorpaydetail({ ...razorpaydetail, amount: razorpaytotal })
 
 
@@ -69,13 +70,18 @@ function Paymentpage() {
 
 
     const handleorder = async (id) => {
+        //date generate 
+        var tomorrow = new Date();
+        tomorrow.setDate(tomorrow.getDate() + 4);
+        const deldate = tomorrow.toDateString()
+        // console.log(deldate);
 
         if (pay == 'cod') {
             for (let i in product) {
                 const newOrder = {
                     ...order,
                     username: userdata.username,
-                    adress: userdata.adress, 
+                    adress: userdata.adress,
                     dist: userdata.dist,
                     email: userdata.email,
                     locality: userdata.locality,
@@ -89,12 +95,21 @@ function Paymentpage() {
                     image: product[i].productId.image,
                     userId: product[i].userId,
                     quantity: product[i].quantity,
-                    paymentmode: "COD"
+                    paymentmode: "COD",
+                    deliverydate: deldate
+
                 };
 
                 const result = await orderup(newOrder);
                 console.log(result);
-                toast.success("Your Order Is Successfully Completed ")
+                Swal.fire({
+                    position: "top-center",
+                    icon: "success",
+                    title: "Your Order Placed Successfully",
+                    showConfirmButton: false,
+                    timer: 2500
+                });
+
                 navigate('/')
 
             }
@@ -122,7 +137,7 @@ function Paymentpage() {
                         const newOrder = {
                             ...order,
                             username: userdata.username,
-                            adress: userdata.adress, 
+                            adress: userdata.adress,
                             dist: userdata.dist,
                             email: userdata.email,
                             locality: userdata.locality,
@@ -138,7 +153,10 @@ function Paymentpage() {
                             quantity: product[i].quantity,
                             paymentmode: "PREPAID",
                             razorpay_order_id: response.razorpay_order_id,
-                            razorpay_payment_id: response.razorpay_order_id
+                            razorpay_payment_id: response.razorpay_order_id,
+                            deliverydate: deldate
+
+
                         };
 
                         const result = await orderup(newOrder);
