@@ -1,16 +1,22 @@
 import React, { useEffect, useState } from 'react'
 import '../Dropdown/Drop.css'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 
 function DropD() {
+   const  navigate=useNavigate()
     const [user,setuser]=useState("")
     useEffect(()=>{
         setuser(sessionStorage.getItem('user'))
     },[])
     const logout=()=>{
+
         sessionStorage.clear()
         toast.error(" successfully log outed")
+        navigate('/')
+
+      
+        
     }
     return (
         <>

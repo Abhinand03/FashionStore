@@ -18,7 +18,7 @@ function Paymentpage() {
     const [userdata, setuserdata] = useState({})
     const [radio, setradio] = useState({ paymentmode: "" })
     const [order, setorder] = useState({
-        adress: "", dist: "", email: "", locality: "", phone: 0, pincode: 0, state: "", username: "", quantity: 0, userId: "", brand: "", category: "", description: "", image: "", price: 0, title: "", paymentmode: "", razorpay_payment_id: "", razorpay_order_id: "", dstatus: "Undelivered", deliverydate: ""
+        adress: "", dist: "", email: "", locality: "", phone: 0, pincode: 0, state: "", username: "", quantity: 0, userId: "", brand: "", category: "", description: "", image: "", price: 0, title: "", paymentmode: "", razorpay_payment_id: "", razorpay_order_id: "", dstatus: "Undelivered", deliverydate: "", color: ""
     })
     const [razorpaydetail, setrazorpaydetail] = useState({
         amount: 0,
@@ -29,8 +29,25 @@ function Paymentpage() {
 
     const location = useLocation()
     const product = location.state
+
     console.log(location.state);
     console.log(product[0].quantity);
+
+    const [productdata, setproductdata] = useState([])
+
+    const mrp = sessionStorage.getItem('mrp')
+    const dis = sessionStorage.getItem('dis')
+
+
+
+
+
+
+
+
+
+
+
 
 
     const navigate = useNavigate()
@@ -41,6 +58,7 @@ function Paymentpage() {
 
 
     useEffect(() => {
+
         if (sessionStorage.getItem('token')) {
             const userDetails = JSON.parse(sessionStorage.getItem('userDetails'))
             console.log(userDetails);
@@ -62,6 +80,7 @@ function Paymentpage() {
         }
 
     }, [headSt])
+
 
 
 
@@ -96,7 +115,8 @@ function Paymentpage() {
                     userId: product[i].userId,
                     quantity: product[i].quantity,
                     paymentmode: "COD",
-                    deliverydate: deldate
+                    deliverydate: deldate,
+                    color: product[i].productId.color
 
                 };
 
@@ -154,7 +174,9 @@ function Paymentpage() {
                             paymentmode: "PREPAID",
                             razorpay_order_id: response.razorpay_order_id,
                             razorpay_payment_id: response.razorpay_order_id,
-                            deliverydate: deldate
+                            deliverydate: deldate,
+                            color: product[i].productId.color
+
 
 
                         };
@@ -210,7 +232,13 @@ function Paymentpage() {
         }
 
         else {
-            toast.error("please Select An Payment Option")
+            // toast.error("")
+        
+            Swal.fire({
+                icon: "error",
+                title: "please Select An Payment Option",
+               
+            });
         }
 
 
@@ -250,22 +278,67 @@ function Paymentpage() {
                             </div>
 
                         </div>
+
                     </Col>
-                    <Col md={5} className='mt d-flex justify-content-center ms-5'>
-                        <div className='d-flex   mt-3 border w-100 p-5 ms-5 '>
+                    <Col md={5} className='mt-5 d-flex justify-content-center ms-5'>
+                        <div className='d-flex   mt-3 border w-50 p-5 ms-5 '>
                             <div>
                                 <div className='w-100'>
-                                    <h4 className='mt-5'>
-                                        Total
-                                    </h4>
-                                    <hr />
-                                    <p>Amount <span className='ms-5'>{total}</span></p>
-                                    <p>Shipping <span className='ms-5 text-success'>Free</span></p>
-                                    <hr />
-                                    <p>GrandTotal <span className='ms-5'>{total}</span></p>
-                                    <input type="radio" onChange={(e) => { setradio({ ...radio, paymentmode: e.target.value }) }} name="cash" id="cash" value="cod" />Cash On Deliveriy
-                                    <br />
-                                    <input type="radio" name="cash" id="" value="prepaid" onChange={(e) => { setradio({ ...radio, paymentmode: e.target.value }) }} className='mt-2' />Online Payment
+                                    <div className='cart-d-p'>
+                                        <div className='d-flex justify-content-between'>
+                                            <h5>Total MRP</h5>
+                                            <h6 className='ms-4'>{mrp}</h6>
+
+                                        </div>
+                                        <div className='d-flex justify-content-between'>
+                                            <h5>Discount On MRP </h5>
+                                            <h6 className='ms-4 text-success'>-{dis}</h6>
+
+                                        </div>
+                                        <div className='d-flex justify-content-between'>
+                                            <h5>Shipping </h5>
+                                            <h6 className='text-success ms-3'>free</h6>
+
+                                        </div>
+
+
+
+                                        <hr />
+                                        <div className='d-flex justify-content-between'>
+                                            <h4>Total </h4>
+                                            <h4>{total}</h4>
+
+                                        </div>
+
+
+                                    </div>
+                                    <div>
+                                        <div className='mt-4'>
+                                            <div className="custom-radio">
+
+                                                <input type="radio" id="radio-2" name="tabs" onChange={(e) => { setradio({ ...radio, paymentmode: e.target.value }) }} value="cod" />
+                                                <label className="radio-label" for="radio-2" >
+                                                    <div className="radio-circle"></div>
+                                                    <span className="radio-text">Cash On Delivary</span>
+                                                </label>
+                                                <input type="radio" id="radio-3" name="tabs" value="prepaid" onChange={(e) => { setradio({ ...radio, paymentmode: e.target.value }) }} />
+                                                <label className="radio-label" for="radio-3">
+                                                    <div className="radio-circle"></div>
+                                                    <span className="radio-text">Online Payment</span>
+                                                </label>
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+                                    {/* <div className='mt-4'>
+
+                                                <input type="radio" onChange={(e) => { setradio({ ...radio, paymentmode: e.target.value }) }} name="cash" id="cash" value="cod" />Cash On Deliveriy
+                                                <br />
+                                                <input type="radio" name="cash" id="" value="prepaid" onChange={(e) => { setradio({ ...radio, paymentmode: e.target.value }) }} className='mt-2' />Online Payment
+
+                                            </div> */}
+
                                     <div className='mt-4  d-grid'>
                                         <button onClick={() => handleorder(product[0].userId)} className='btn btn-warning p-2 block' >Place Order</button>
                                     </div>
@@ -282,6 +355,9 @@ function Paymentpage() {
                         </div>
                     </Col>
                 </Row>
+                <div>
+                    <img className='pay-img' src="https://i0.wp.com/365webresources.com/wp-content/uploads/2023/04/Tiny-Payment-Method-Icons.webp?ssl=1" alt="" />
+                </div>
             </div>
         </>
 

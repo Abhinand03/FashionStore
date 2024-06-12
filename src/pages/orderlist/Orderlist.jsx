@@ -61,7 +61,7 @@ function Orderlist() {
                 </div>
                 <p>₹{item.price}</p>
                 <p>{item.paymentmode}</p>
-                <p>delivery on 4 may</p>
+                <p>delivery on <span className='ms-3'>{item?.deliverydate}</span> </p>
               </div>
             </div>
 

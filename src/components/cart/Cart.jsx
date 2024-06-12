@@ -54,6 +54,9 @@ function Cart() {
 
   sessionStorage.setItem('total', total)
 
+  sessionStorage.setItem('mrp',mrp)
+  sessionStorage.setItem('dis',dis)
+
 
 
 

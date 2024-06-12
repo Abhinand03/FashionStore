@@ -40,7 +40,7 @@ function Header() {
   }
   useEffect(() => {
     handlecartcount()
-  }, [headSt])
+  }, [headSt,status])
 
   const handlecartcount = async () => {
     const header = { "Authorization": `Bearer ${sessionStorage.getItem('token')}` }

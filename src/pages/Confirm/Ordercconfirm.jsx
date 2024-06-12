@@ -29,7 +29,12 @@ function Ordercconfirm() {
     const [data, setdata] = useState({
         username: "", email: "", phone: "", adress: "", pincode: "", dist: "", state: "", locality: ""
     })
+
+    const mrp=sessionStorage.getItem('mrp')
+    const dis=sessionStorage.getItem('dis')
     useEffect(() => {
+
+
         if (sessionStorage.getItem('token')) {
             const userDetails = JSON.parse(sessionStorage.getItem('userDetails'))
             console.log(userDetails);
@@ -147,20 +152,40 @@ function Ordercconfirm() {
 
                                 </div>
                                 <div>
-                                    <h4 className='mt-5'>
-                                        Toatl
-                                    </h4>
-                                    <p>Amount <span className='ms-5'>{total}</span></p>
-                                    <p>Shipping <span className='ms-5 text-success'>Free</span></p>
-                                    <hr />
-                                    <p>GrandTotal <span className='ms-5'>{total}</span></p>
+                                <div className='cart-d-p'>
+                    <div className='d-flex justify-content-between'>
+                      <p>Total MRP</p>
+                      <p className='ms-4'>{mrp}</p>
 
+                    </div>
+                    <div className='d-flex justify-content-between'>
+                      <p>Discount On MRP </p>
+                      <p className='ms-4 text-success'>-{dis}</p>
+
+                    </div>
+                    <div className='d-flex justify-content-between'>
+                      <p>Shipping </p>
+                      <p className='text-success ms-3'>free</p>
+
+                    </div>
+
+
+
+                    <hr />
+                    <div className='d-flex justify-content-between'>
+                    <h5>Total </h5>
+                    <h5>{total}</h5>
+
+                    </div>
+                    
+
+                  </div>
 
 
 
 
                                 </div>
-                                <Link to={'/pay'} state={product}>
+                                <Link to={'/pay'} state={product} className='text-decoration-none'>
                                     <div className='mt-4  d-grid'>
                                         <button className='btn btn-warning p-2 block' onClick={handleupdate}>Continue</button>
                                     </div>

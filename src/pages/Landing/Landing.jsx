@@ -36,7 +36,7 @@ function Landing() {
     <>
       <Header />
       <Banner search={search}/>
-      <h1 className='text-center mt-4 text-danger'>New Arrivals</h1>
+      <h1 className='text-center mt-4 text-white bg-danger'>New Arrivals</h1>
       <div className='d-flex justify-content-center  flex-wrap g-0'>
         {
           product.length>0?product.map(item=>(
